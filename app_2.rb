@@ -6,10 +6,22 @@ require_relative 'lib/player'
 
 enemies = []
 
+def render_ascii_art
+    File.readlines("ascii_art.txt") do |line|
+      puts line
+    end
+end
+
+def render_ascii_art_2
+    File.readlines("ascii_art_2.txt") do |line|
+      puts line
+    end
+end
+
 puts render_ascii_art
 puts render_ascii_art_2
 
-puts "Quel est ton prénom, guerrier ?"
+puts "Quel est ton prénom, guerrier-re ?"
 @name = gets.chomp
 human_player = HumanPlayer.new(@name)
 
@@ -42,3 +54,4 @@ while human_player.life_points > 0 && (player1.life_points > 0 || player2.life_p
     enemies.each do |player| player.attacks(human_player) if player.life_points > 0 end
 end
 
+binding.pry
